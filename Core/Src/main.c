@@ -33,6 +33,7 @@
 #include "pid.h"
 #include "utils.h"
 #include "motor.h"
+#include "../MPU6050/mpu6050.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -77,8 +78,7 @@ void SystemClock_Config(void);
 /* USER CODE BEGIN 0 */
 char dataBuffer[MAX_LEN_DATA];
 
-
-
+MPU6050_t MPU6050;
 
 uint32_t g_nCmdPulse;
 float g_dCmdVel;
@@ -141,8 +141,10 @@ int main(void)
   tProcess = NONE;
 
 
-  tMotor1.ptd = 0.133333; //2700
-  tMotor2.ptd = 0.139534; //2580
+  tMotor1.ptd = 0.091; //2700
+  tMotor2.ptd = 0.091; //2580
+
+//  while (MPU6050_Init(&hi2c1) == 1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -154,6 +156,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+
   }
   /* USER CODE END 3 */
 }
@@ -279,6 +282,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     	ReadEncoder(&tMotor1, &htim4);
     	ReadEncoder(&tMotor2, &htim3);
     	MotorMovePos(&tProfile, &tPID_1, &tPID_2, &tMotor1, &tMotor2, dir1, dir2);
+//    	MPU6050_Read_All(&hi2c1, &MPU6050);
     }
   }
 }
@@ -322,14 +326,14 @@ void MotorMovePos(PROFILE_t *tProfile, PID_CONTROL_t *tPIDControl1, PID_CONTROL_
   MotorSetDuty(abs(g_nDutyCycle_1), MOTOR_1);
   MotorSetDuty(abs(g_nDutyCycle_2), MOTOR_2);
 
-//  double real[6] = {tmotor1->velocity, tmotor2->velocity,  g_dCmdVel, tmotor1->position, tmotor2->position, dPosTemp};
+//  double real[7] = {tmotor1->velocity, tmotor2->velocity,  g_dCmdVel, tmotor1->position, tmotor2->position, dPosTemp, 0.0f};
 //  strcpy(result, "=");
-//  for (int i = 0; i < 6; i++) {
-//        char buffer[20];
+//  for (int i = 0; i < 7; i++) {
+//        char buffer[25];
 //        snprintf(buffer, sizeof(buffer), "%.2f", creal(real[i]));
 //        strcat(result, buffer);
 //
-//        if (i < 5) {
+//        if (i < 6) {
 //            strcat(result, ",");
 //        }
 //    }
@@ -348,12 +352,18 @@ void MotorMovePos(PROFILE_t *tProfile, PID_CONTROL_t *tPIDControl1, PID_CONTROL_
     tProcess = NONE;
     MotorSetDuty(0, MOTOR_1);
     MotorSetDuty(0, MOTOR_2);
+    tmotor1->velocity = 0;
+    tmotor2->velocity = 0;
     tmotor1->position = 0;
     tmotor2->position = 0;
     tmotor1->counter = 0;
     tmotor2->counter = 0;
     PIDReset(&tPID_2);
     PIDReset(&tPID_1);
+    if(tProfile->dMidStep3 < 2.0f)
+    {
+    for(uint64_t i = 0; i < 5000000; i++){};
+    }
     HAL_UART_Transmit(&huart2, (uint8_t *)statusOK, sizeof(statusOK), 1000);
     tProcess = NONE;
   }

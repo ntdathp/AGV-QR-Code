@@ -1,5 +1,4 @@
-
-
+#include <math.h>
 #include "motor.h"
 
 PROFILE_t tProfile;
@@ -104,9 +103,14 @@ void MotorGetPulse(uint32_t *nPulse, uint8_t motor)
 
 void MotorTrapzoidalInit(PROFILE_t *tProfile, float maxPos, float maxVel, float maxAcc)
 {
+	if (maxPos <= 0 || maxVel <= 0 || maxAcc <= 0) {
+
+	        return;
+	    }
+	if (maxVel > sqrt(maxAcc * maxPos)) maxVel = sqrt(maxAcc * maxPos) - 1.0f;
 	tProfile->dAccelMax = maxAcc;
 	tProfile->dVelMax = maxVel;
-	tProfile->dPosMax = maxPos * 1.25749; //Must Increase
+	tProfile->dPosMax = maxPos * 0.8725; //Must Increase
 
 	tProfile->dA1 = 0.5f * tProfile->dAccelMax;
 	tProfile->dA2 = tProfile->dVelMax;

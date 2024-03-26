@@ -10,6 +10,7 @@ void PIDReset(PID_CONTROL_t *PID_Ctrl)
 {
     PID_Ctrl->dIntergral = 0.0f;
     PID_Ctrl->dErrorTerm = 0.0f;
+    PID_Ctrl->result = 0.0f;
     g_dPIDError = 0;
 }
 
@@ -46,8 +47,12 @@ float PIDCompute(PID_CONTROL_t *PID_Ctrl, float dCmdValue, float dActValue, floa
     dP = PID_Ctrl->dKp * g_dPIDError;
     PID_Ctrl->dIntergral += g_dPIDError;
     dI = PID_Ctrl->dKi * dTs / 2 * PID_Ctrl->dIntergral;
+
     dD = PID_Ctrl->dKd * (g_dPIDError - PID_Ctrl->dErrorTerm) / dTs;
+
     dPIDResult = dP + dI + dD;
+    if(dPIDResult > 99) dPIDResult = 99;
+    if(dPIDResult < -99) dPIDResult = - 99;
     PID_Ctrl->result = dPIDResult;
     PID_Ctrl->dErrorTerm = g_dPIDError;
 

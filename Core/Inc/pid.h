@@ -4,7 +4,7 @@
 
 #include <stdint.h>
 
-#define SAMPLING_TIME 0.01
+#define SAMPLING_TIME 0.005
 #define MINUTE 60
 #define SECOND 1
 

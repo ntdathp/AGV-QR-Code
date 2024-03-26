@@ -1,0 +1,10 @@
+../Core/Src/motor.c:7:6:MotorSetRun	1
+../Core/Src/motor.c:16:6:Motor1Forward	1
+../Core/Src/motor.c:21:6:Motor1Backward	1
+../Core/Src/motor.c:26:6:Motor2Forward	1
+../Core/Src/motor.c:31:6:Motor2Backward	1
+../Core/Src/motor.c:36:6:ReadEncoder	2
+../Core/Src/motor.c:55:6:MotorSetDuty	3
+../Core/Src/motor.c:68:6:MotorInit	1
+../Core/Src/motor.c:92:6:MotorGetPulse	3
+../Core/Src/motor.c:104:6:MotorTrapzoidalInit	5

@@ -10,8 +10,7 @@
 
 #define MOTOR_1 1
 #define MOTOR_2 2
-//#define TotalPulse 7500
-//#define TotalDeg 360
+
 
 
 
