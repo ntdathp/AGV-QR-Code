@@ -134,6 +134,7 @@ int main(void)
   MX_TIM4_Init();
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
+  while (MPU6050_Init(&hi2c1) == 1);
   SerialInit();
   MotorInit();
   MotorSetRun();
@@ -144,7 +145,7 @@ int main(void)
   tMotor1.ptd = 0.091; //2700
   tMotor2.ptd = 0.091; //2580
 
-//  while (MPU6050_Init(&hi2c1) == 1);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -240,7 +241,9 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 	    	    MotorTrapzoidalInit(&tProfile, arrData1.pos1, arrData1.vel1, arrData1.acc1);
 	    	    dir1 = arrData1.dir1;
 	    	    dir2 = arrData1.dir2;
+
 	    	    tProcess = RUN_TEST;
+
 	    	        if (dir1 == HEAD)
 	    	        {
 	    	        	Motor1Forward();
@@ -276,13 +279,14 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     switch (tProcess)
     {
     case NONE:
+    	MPU6050_Read_All(&hi2c1, &MPU6050);
     	break;
     case RUN_TEST:
     	MotorSetRun();
     	ReadEncoder(&tMotor1, &htim4);
     	ReadEncoder(&tMotor2, &htim3);
+    	MPU6050_Read_All(&hi2c1, &MPU6050);
     	MotorMovePos(&tProfile, &tPID_1, &tPID_2, &tMotor1, &tMotor2, dir1, dir2);
-//    	MPU6050_Read_All(&hi2c1, &MPU6050);
     }
   }
 }
@@ -290,6 +294,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 void MotorMovePos(PROFILE_t *tProfile, PID_CONTROL_t *tPIDControl1, PID_CONTROL_t *tPIDControl2,Motor_t *tmotor1, Motor_t *tmotor2, uint8_t dir1, uint8_t dir2)
 {
   int32_t g_nDutyCycle_1, g_nDutyCycle_2;
+
 
   float dPosTemp = 0;
 
@@ -315,7 +320,11 @@ void MotorMovePos(PROFILE_t *tProfile, PID_CONTROL_t *tPIDControl1, PID_CONTROL_
   }
 
   // Control PID
-
+  if(tMotor1.dir == tMotor2.dir)
+  	{
+	 g_nDutyCycle_1 = (int16_t)PIDCompute(tPIDControl1, g_dCmdVel + MPU6050.Gz, tMotor1.velocity, SAMPLING_TIME);
+	  g_nDutyCycle_2 = (int16_t)(PIDCompute(tPIDControl2, g_dCmdVel - MPU6050.Gz, tMotor2.velocity, SAMPLING_TIME));
+	}
   g_nDutyCycle_1 = (int16_t)PIDCompute(tPIDControl1, g_dCmdVel, tMotor1.velocity, SAMPLING_TIME);
   g_nDutyCycle_2 = (int16_t)(PIDCompute(tPIDControl2, g_dCmdVel, tMotor2.velocity, SAMPLING_TIME));
 
