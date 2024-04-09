@@ -110,7 +110,7 @@ void MotorTrapzoidalInit(PROFILE_t *tProfile, float maxPos, float maxVel, float 
 	if (maxVel > sqrt(maxAcc * maxPos)) maxVel = sqrt(maxAcc * maxPos) - 1.0f;
 	tProfile->dAccelMax = maxAcc;
 	tProfile->dVelMax = maxVel;
-	tProfile->dPosMax = maxPos * 0.8725; //Must Increase
+	tProfile->dPosMax = maxPos * 0.88083; //Must Increase
 
 	tProfile->dA1 = 0.5f * tProfile->dAccelMax;
 	tProfile->dA2 = tProfile->dVelMax;

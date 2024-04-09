@@ -143,7 +143,7 @@ int main(void)
 
 
   tMotor1.ptd = 0.091; //2700
-  tMotor2.ptd = 0.091; //2580
+  tMotor2.ptd = 0.096; //2580
 
 
   /* USER CODE END 2 */
@@ -246,22 +246,22 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 
 	    	        if (dir1 == HEAD)
 	    	        {
-	    	        	Motor1Forward();
+	    	        	//Motor1Forward();
 	    	        	tMotor1.dir = HEAD;
 	    	        }
 	    	        else
 	    	        {
-	    	        	Motor1Backward();
+	    	        	//Motor1Backward();
 	    	        	tMotor1.dir = BACK;
 	    	        }
 	    	        if (dir2 == HEAD)
 	    	        {
-	    	        	Motor2Forward();
+	    	        	//Motor2Forward();
 	    	        	tMotor2.dir = HEAD;
 	    	        }
 	    	        else
 	    	        {
-	    	        	Motor2Backward();
+	    	        	//Motor2Backward();
 	    	        	tMotor2.dir = BACK;
 	    	        }
 	    }
@@ -325,17 +325,35 @@ void MotorMovePos(PROFILE_t *tProfile, PID_CONTROL_t *tPIDControl1, PID_CONTROL_
 	 g_nDutyCycle_1 = (int16_t)PIDCompute(tPIDControl1, g_dCmdVel + MPU6050.Gz, tMotor1.velocity, SAMPLING_TIME);
 	  g_nDutyCycle_2 = (int16_t)(PIDCompute(tPIDControl2, g_dCmdVel - MPU6050.Gz, tMotor2.velocity, SAMPLING_TIME));
 	}
+  else
+  {
   g_nDutyCycle_1 = (int16_t)PIDCompute(tPIDControl1, g_dCmdVel, tMotor1.velocity, SAMPLING_TIME);
   g_nDutyCycle_2 = (int16_t)(PIDCompute(tPIDControl2, g_dCmdVel, tMotor2.velocity, SAMPLING_TIME));
+  }
 
-  dutyCycle_global_1 = g_nDutyCycle_1;
-  dutyCycle_global_2 = g_nDutyCycle_2;
+  if (g_nDutyCycle_1 > 0)
+  {
+  	Motor1Forward();
+  	MotorSetDuty(abs(g_nDutyCycle_1), MOTOR_1);
+  }
+  else
+  {
+  	Motor1Backward();
+  	MotorSetDuty(abs(g_nDutyCycle_1), MOTOR_1);
+  }
+  if (g_nDutyCycle_2 > 0)
+  {
+  	Motor2Forward();
+  	MotorSetDuty(abs(g_nDutyCycle_2), MOTOR_2);
+  }
+  else
+  {
+  	Motor2Backward();
+  	MotorSetDuty(abs(g_nDutyCycle_2), MOTOR_2);;
+  }
 
 
-  MotorSetDuty(abs(g_nDutyCycle_1), MOTOR_1);
-  MotorSetDuty(abs(g_nDutyCycle_2), MOTOR_2);
-
-//  double real[7] = {tmotor1->velocity, tmotor2->velocity,  g_dCmdVel, tmotor1->position, tmotor2->position, dPosTemp, 0.0f};
+//  double real[7] = {tmotor1->velocity, tmotor2->velocity,  g_dCmdVel, tmotor1->position, tmotor2->position, dPosTemp, MPU6050.yaw};
 //  strcpy(result, "=");
 //  for (int i = 0; i < 7; i++) {
 //        char buffer[25];
@@ -374,6 +392,7 @@ void MotorMovePos(PROFILE_t *tProfile, PID_CONTROL_t *tPIDControl1, PID_CONTROL_
     for(uint64_t i = 0; i < 5000000; i++){};
     }
     HAL_UART_Transmit(&huart2, (uint8_t *)statusOK, sizeof(statusOK), 1000);
+    MPU6050.yaw = 0.0f;
     tProcess = NONE;
   }
   tProfile->nTime += SAMPLING_TIME;

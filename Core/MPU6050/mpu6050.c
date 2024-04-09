@@ -177,11 +177,11 @@ void MPU6050_Read_All(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
 //    DataStruct->Temperature = (float)((int16_t)temp / (float)340.0 + (float)36.53);
 //    DataStruct->Gx = DataStruct->Gyro_X_RAW / 131.0;
 //    DataStruct->Gy = DataStruct->Gyro_Y_RAW / 131.0;
-    DataStruct->Gz = DataStruct->Gyro_Z_RAW / 131.0 - 0.5;
+    DataStruct->Gz = DataStruct->Gyro_Z_RAW / 131.0 - 0.7;
 
     // Kalman angle solve
-//    double dt = (double)(HAL_GetTick() - timer) / 1000;
-//    timer = HAL_GetTick();
+    double dt = (double)(HAL_GetTick() - timer) / 1000;
+    timer = HAL_GetTick();
 
 //    double roll;
 //    double roll_sqrt = sqrt(
@@ -215,7 +215,7 @@ void MPU6050_Read_All(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
 //    K.x =  DataStruct->Gz;
 //    kalman_single(&K, 0.0127, 0.001);
 //    DataStruct->Gz = K.x_hat;
-//    DataStruct->yaw +=  DataStruct->Gz * dt;
+    DataStruct->yaw +=  DataStruct->Gz * dt;
 }
 
 double Kalman_getAngle(Kalman_t *Kalman, double newAngle, double newRate, double dt)

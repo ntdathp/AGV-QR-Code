@@ -5,4 +5,4 @@
 ../Core/Src/main.c:223:6:HAL_UART_RxCpltCallback	40	static
 ../Core/Src/main.c:274:6:HAL_TIM_PeriodElapsedCallback	32	static
 ../Core/Src/main.c:294:6:MotorMovePos	56	static
-../Core/Src/main.c:389:6:Error_Handler	4	static,ignoring_inline_asm
+../Core/Src/main.c:408:6:Error_Handler	4	static,ignoring_inline_asm
