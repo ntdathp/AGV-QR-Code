@@ -1,0 +1,19 @@
+{
+    "coefficient": 1.15,
+    "coefficient2": 5.028,
+    "degree1" : 4.39,
+    "degree" : 4.829,
+    "vel_doAngle": 80,
+    "acc_doAngle": 100,
+    "vel_doDistance": 80,
+    "acc_doDistance": 100,
+    "back_doDistance": 0.77,
+    "head_doDistance": 0.77,
+    "head" : 0.58,
+    "vel_doCorrect": 80,
+    "acc_doCorrect": 100,
+    "back_doCorrectDistance": 0.98,
+    "head_doCorrectDistance": 0.98,
+    "count_calib4": 15,
+    "saturation": 100
+ }

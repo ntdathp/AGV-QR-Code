@@ -1,0 +1,345 @@
+*************************************************************
+FileName = PCB_HBridge.GBR
+AutoAperture = True
+*************************************************************
+Generating : Mechanical 15
+      File : PCB_HBridge.GM15
+
+    Adding Layer      : Mechanical 15
+
+
+Used DCodes :
+    D52
+    D53
+*************************************************************
+
+*************************************************************
+Generating : Top Overlay
+      File : PCB_HBridge.GTO
+
+    Adding Layer      : Top Overlay
+
+
+Used DCodes :
+    D10
+    D11
+    D12
+    D13
+    D14
+    D15
+*************************************************************
+
+*************************************************************
+Generating : Bottom Pad Master
+      File : PCB_HBridge.GPB
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D36
+    D37
+    D45
+    D46
+    D47
+    D48
+    D49
+*************************************************************
+
+*************************************************************
+Generating : Top Pad Master
+      File : PCB_HBridge.GPT
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D16
+    D17
+    D18
+    D19
+    D20
+    D21
+    D22
+    D23
+    D24
+    D25
+    D36
+    D37
+    D42
+    D45
+    D46
+    D47
+    D48
+    D49
+*************************************************************
+
+*************************************************************
+Generating : Top Solder
+      File : PCB_HBridge.GTS
+
+    Adding Layer      : Top Solder
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D24
+    D25
+    D26
+    D27
+    D28
+    D29
+    D30
+    D31
+    D32
+    D33
+    D34
+    D35
+    D36
+    D37
+    D38
+    D39
+    D40
+    D41
+*************************************************************
+
+*************************************************************
+Generating : Bottom Solder
+      File : PCB_HBridge.GBS
+
+    Adding Layer      : Bottom Solder
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D35
+    D36
+    D37
+    D38
+    D39
+    D40
+    D41
+*************************************************************
+
+*************************************************************
+Generating : Top Paste
+      File : PCB_HBridge.GTP
+
+    Adding Layer      : Top Paste
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D16
+    D17
+    D18
+    D19
+    D20
+    D21
+    D22
+    D23
+    D24
+    D25
+*************************************************************
+
+*************************************************************
+Generating : Keep-Out Layer
+      File : PCB_HBridge.GKO
+
+    Adding Layer      : Keep-Out Layer
+
+
+Used DCodes :
+    D15
+*************************************************************
+
+*************************************************************
+Generating : Bottom Layer
+      File : PCB_HBridge.GBL
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D15
+    D36
+    D37
+    D43
+    D45
+    D46
+    D47
+    D48
+    D49
+    D50
+    D51
+*************************************************************
+
+*************************************************************
+Generating : Top Courtyard
+      File : PCB_HBridge.GM2
+
+    Adding Layer      : Top Courtyard
+
+
+Used DCodes :
+    D14
+    D52
+*************************************************************
+
+*************************************************************
+Generating : Top Component Outline
+      File : PCB_HBridge.GM11
+
+    Adding Layer      : Top Component Outline
+
+
+Used DCodes :
+    D53
+*************************************************************
+
+*************************************************************
+Generating : Top 3D Body
+      File : PCB_HBridge.GM3
+
+    Adding Layer      : Top 3D Body
+
+
+Used DCodes :
+    D14
+    D53
+*************************************************************
+
+*************************************************************
+Generating : Top Component Center
+      File : PCB_HBridge.GM7
+
+    Adding Layer      : Top Component Center
+
+
+Used DCodes :
+    D52
+    D53
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 13
+      File : PCB_HBridge.GM13
+
+    Adding Layer      : Mechanical 13
+
+
+Used DCodes :
+    D11
+    D53
+*************************************************************
+
+*************************************************************
+Generating : Top Layer
+      File : PCB_HBridge.GTL
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D15
+    D16
+    D17
+    D18
+    D19
+    D20
+    D21
+    D22
+    D23
+    D24
+    D25
+    D36
+    D37
+    D42
+    D43
+    D44
+    D45
+    D46
+    D47
+    D48
+    D49
+    D50
+    D51
+*************************************************************
+
+*************************************************************
+Generating : Drill Drawing
+      File : PCB_HBridge.GD1
+
+    Adding Drill Pair : Top Layer-Bottom Layer
+
+    Adding Layer      : Drill Drawing
+
+
+Used DCodes :
+    D11
+    D56
+*************************************************************
+
+*************************************************************
+Generating : Drill Guide
+      File : PCB_HBridge.GG1
+
+    Adding Drill Pair : Top Layer-Bottom Layer
+
+    Adding Layer      : Drill Guide
+
+
+Used DCodes :
+    D11
+*************************************************************
+
+*************************************************************
+Generating : Profile
+      File : PCB_HBridge.GM
+
+
+Used DCodes :
+    D57
+*************************************************************
+
+*************************************************************
+Generating : Top Designator
+      File : PCB_HBridge.GM4
+
+    Adding Layer      : Top Designator
+
+
+Used DCodes :
+    D53
+    D54
+    D55
+*************************************************************
+
+*************************************************************
+Generating : Top Assembly
+      File : PCB_HBridge.GM6
+
+    Adding Layer      : Top Assembly
+
+
+Used DCodes :
+    D14
+*************************************************************
+
