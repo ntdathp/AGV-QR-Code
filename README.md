@@ -9,7 +9,9 @@ Develop a robot model with a downward-facing camera to observe QR codes on the g
 ### PID Controller and Trapizoidal Velocity Profile:
 Using trapezoidal velocity information and a PID velocity controller to move the vehicle within the QR code matrix.
 rapizoidal Velocity Profile and PID velocity control result:
+
 ![TVF](image/TVF.png)
+
 Robot Moving:
 ![Robot_Moving.gif](video/Robot_Moving.gif)
 ### GUI:
