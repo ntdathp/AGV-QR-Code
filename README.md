@@ -1,4 +1,4 @@
-# AGV QR code
+# AGV QR Code
 
 ### This repo consists of firmware, software and hardward of my thesis about AGV QR code:
 The thesis designs a solution using a QR code matrix set up to navigate and locate an AGV. The AGV will follow a trajectory defined by the user, with specified start and end points
