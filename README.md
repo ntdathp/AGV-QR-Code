@@ -25,7 +25,6 @@ rapizoidal Velocity Profile and PID velocity control result:
 ### GUI:
 The GUI interface is programmed using Qt, communicating with the robot through the MQTT protocol. It sends the movement trajectory between two endpoints set by the user, notifies when the vehicle reaches the QR codes in the matrix, and adjusts the vehicle's speed.
 
-GUI:
 
 ![GUI](image/GUI.png)
 
@@ -40,3 +39,5 @@ The QR code matrix is arranged on the floor, and a camera positioned above looks
 QR code matrix:
 
 ![Test environment](image/Test_environment.png)
+
+Result: [![Result](https://img.youtube.com/vi/Og9lnYisi18&list=PLiomqXJMBwLjaPSaCo-AB2hMpSG3AKzQ9&index=8/0.jpg)](https://www.youtube.com/watch?v=Og9lnYisi18&list=PLiomqXJMBwLjaPSaCo-AB2hMpSG3AKzQ9&index=8)
