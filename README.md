@@ -40,4 +40,4 @@ QR code matrix:
 
 ![Test environment](image/Test_environment.png)
 
-Result: [![Result](https://img.youtube.com/vi/Og9lnYisi18&list=PLiomqXJMBwLjaPSaCo-AB2hMpSG3AKzQ9/16.jpg)](https://www.youtube.com/watch?v=Og9lnYisi18&list=PLiomqXJMBwLjaPSaCo-AB2hMpSG3AKzQ9&index=8)
+Result: [![Result](https://img.youtube.com/vi/Og9lnYisi18&list=PLiomqXJMBwLjaPSaCo-AB2hMpSG3AKzQ9/0.jpg)](https://www.youtube.com/watch?v=Og9lnYisi18&list=PLiomqXJMBwLjaPSaCo-AB2hMpSG3AKzQ9&index=8)
