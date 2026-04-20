@@ -79,9 +79,9 @@ $$
 The heading error is computed with respect to the line direction,
 
 $$
-\theta_{\mathrm{path}} = \operatorname{atan2}(y_g-y_0,\;x_g-x_0),
+\theta_{\mathrm{path}} = \mathrm{atan2}(y_g-y_0,\;x_g-x_0),
 \qquad
-e_\theta = \operatorname{wrapToPi}(\theta_{\mathrm{path}}-\theta),
+e_\theta = \mathrm{wrapToPi}(\theta_{\mathrm{path}}-\theta),
 $$
 
 where $\theta$ is the current robot heading.
